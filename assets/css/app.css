@@ -1,0 +1,33 @@
+html {
+    box-sizing: border-box;
+}
+
+*,*:before,*:after{
+    box-sizing: inherit;
+}
+body {
+  background-image: url(../img/img1.webp); /* ruta relativa al CSS */
+  background-size: cover;      /* la imagen cubre todo el body */
+  background-position: center; /* centrada */
+  background-repeat: no-repeat; /* no se repite */
+  min-height: 100vh;           /* asegura que cubra toda la pantalla */
+}
+.full-page-overlay {
+  background-color: rgba(34, 74, 130, 0.8); /* verde semi-transparente */
+  height: 100vh;   /* altura de toda la ventana */
+  width: 100vw;    /* ancho completo */
+  display: flex;   /* para centrar el contenido */
+  justify-content: center; /* centrado horizontal */
+  align-items: center;     /* centrado vertical */
+  text-align: center;
+  color: white;
+  padding: 20px;
+}
+
+card.btn{
+    padding: 5px 10px;
+}
+/* Botones centrados */
+.full-page-overlay .btn {
+  margin-top: 15px;
+}
