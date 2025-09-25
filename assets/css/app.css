@@ -6,28 +6,16 @@ html {
     box-sizing: inherit;
 }
 body {
-  background-image: url(../img/img1.webp); /* ruta relativa al CSS */
-  background-size: cover;      /* la imagen cubre todo el body */
-  background-position: center; /* centrada */
-  background-repeat: no-repeat; /* no se repite */
-  min-height: 100vh;           /* asegura que cubra toda la pantalla */
+  background-image:linear-gradient(rgba(25, 97, 149, 0.845), rgba(0, 2, 128, 0.681)),url(../img/img1.webp); 
+  background-size: cover;      
+  background-position: center; 
+  background-repeat: no-repeat; 
+  min-height: 100vh;    
+  background-attachment: fixed;       
 }
-.full-page-overlay {
-  background-color: rgba(34, 74, 130, 0.8); /* verde semi-transparente */
-  height: 100vh;   /* altura de toda la ventana */
-  width: 100vw;    /* ancho completo */
-  display: flex;   /* para centrar el contenido */
-  justify-content: center; /* centrado horizontal */
-  align-items: center;     /* centrado vertical */
-  text-align: center;
-  color: white;
-  padding: 20px;
-}
+
 
 card.btn{
     padding: 5px 10px;
 }
 /* Botones centrados */
-.full-page-overlay .btn {
-  margin-top: 15px;
-}
