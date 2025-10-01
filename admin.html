@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administración - Canchas DuocUc</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="assets/css/app.css"> 
+</head>
+<body>
+
+    <header class="sticky-top">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark bg-opacity-75">
+            <div class="container">
+                <a class="navbar-brand fw-bold" href="index.html">⚽ CANCHAS DUOCUC</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+                        <li class="nav-item"><a class="nav-link" href="catalogo.html">Canchas</a></li>
+                        <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="admin.html">Admin</a></li>
+                        <li class="nav-item ms-lg-3"><a class="nav-link btn btn-outline-primary" href="login.html"><i class="bi bi-box-arrow-right"></i> Cerrar Sesión</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container my-5">
+        <h1 class="text-center fw-bold mb-5"><i class="bi bi-gear-fill me-3"></i>Panel de Administración</h1>
+        
+        <div class="card shadow-lg p-3">
+
+            <ul class="nav nav-tabs" id="adminTabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="canchas-tab" data-bs-toggle="tab" data-bs-target="#canchas" type="button" role="tab" aria-controls="canchas" aria-selected="true"><i class="bi bi-grid-fill"></i> Productos (Canchas)</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="reservas-tab" data-bs-toggle="tab" data-bs-target="#reservas" type="button" role="tab" aria-controls="reservas" aria-selected="false"><i class="bi bi-calendar-check-fill"></i> Órdenes (Reservas)</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="usuarios-tab" data-bs-toggle="tab" data-bs-target="#usuarios" type="button" role="tab" aria-controls="usuarios" aria-selected="false"><i class="bi bi-people-fill"></i> Usuarios y Roles</button>
+                </li>
+            </ul>
+
+            <div class="tab-content pt-3" id="adminTabsContent">
+                
+                <div class="tab-pane fade show active" id="canchas" role="tabpanel" aria-labelledby="canchas-tab">
+                    <h2>Administrar Canchas</h2>
+                    <p class="text-muted">Crear, editar o eliminar productos (canchas) del catálogo.</p>
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <h4>Crear Nueva Cancha</h4>
+                            <form>
+                                <div class="mb-3">
+                                    <label for="nombreCancha" class="form-label">Nombre</label>
+                                    <input type="text" class="form-control" id="nombreCancha" value="Cancha N°6 Pasto Natural">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="precio" class="form-label">Precio Arriendo ($)</label>
+                                    <input type="number" class="form-control" id="precio" value="25000">
+                                </div>
+                                <button type="submit" class="btn btn-success"><i class="bi bi-plus-circle"></i> Guardar Producto</button>
+                            </form>
+                        </div>
+                        <div class="col-md-6">
+                            <h4>Canchas Actuales</h4>
+                            <ul class="list-group">
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Cancha N°1 (7v7)
+                                    <span class="badge bg-primary rounded-pill">Editar</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Cancha N°2 (5v5)
+                                    <span class="badge bg-primary rounded-pill">Editar</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-pane fade" id="reservas" role="tabpanel" aria-labelledby="reservas-tab">
+                    <h2>Órdenes de Compra / Reservas</h2>
+                    <p class="text-muted">Revisar el estado de los pedidos y el historial de transacciones.</p>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <h5>Crear Reserva</h5>
+                            <form id="createReservaForm" class="row g-2">
+                                <div class="col-12">
+                                    <label class="form-label">Cliente</label>
+                                    <select id="reservaClienteSelect" class="form-select"></select>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label">Cancha</label>
+                                    <select id="reservaCanchaSelect" class="form-select"></select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Fecha</label>
+                                    <input id="reservaFecha" type="date" class="form-control">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Total ($)</label>
+                                    <input id="reservaTotal" type="number" class="form-control">
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label">Estado</label>
+                                    <select id="reservaEstado" class="form-select">
+                                        <option value="pendiente">Pendiente</option>
+                                        <option value="pagada">Pagada</option>
+                                    </select>
+                                </div>
+                                <div class="col-12 text-end">
+                                    <button class="btn btn-success mt-2" type="submit"><i class="bi bi-plus-circle"></i> Crear Reserva</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>ID Orden</th>
+                                <th>Cliente</th>
+                                <th>Fecha Reserva</th>
+                                <th>Total</th>
+                                <th>Estado</th>
+                                <th>Acción</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="tab-pane fade" id="usuarios" role="tabpanel" aria-labelledby="usuarios-tab">
+                    <h2>Gestión de Usuarios y Roles</h2>
+                    <p class="text-muted">Modificar roles (Administrador, Vendedor, Cliente) de los usuarios registrados.</p>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <h5>Crear Usuario</h5>
+                            <form id="createUserForm" class="row g-2">
+                                <div class="col-12">
+                                    <label class="form-label">Email</label>
+                                    <input id="userEmail" type="email" class="form-control" required>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label">Nombre</label>
+                                    <input id="userName" type="text" class="form-control">
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label">Rol</label>
+                                    <select id="userRole" class="form-select">
+                                        <option value="cliente">Cliente</option>
+                                        <option value="vendedor">Vendedor</option>
+                                        <option value="admin">Administrador</option>
+                                    </select>
+                                </div>
+                                <div class="col-12 text-end">
+                                    <button class="btn btn-success mt-2" type="submit"><i class="bi bi-plus-circle"></i> Crear Usuario</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <table class="table table-bordered table-sm">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>#</th>
+                                <th>Email</th>
+                                <th>Nombre</th>
+                                <th>Rol</th>
+                                <th>Acción</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-dark text-white pt-5 pb-4">
+        </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    <script src="assets/js/login.js"></script>
+    <script src="assets/js/session.js"></script>
+    <script src="assets/js/admin.js"></script>
+</body>
+</html>
